@@ -20,9 +20,6 @@ export class User {
   @UpdateDateColumn()
   updatedAt: string;
 
-  // @Column({ nullable: true })
-  // roleUuid?: string;
-
-  @ManyToOne(role => Role, role => role.uuid)
+  @ManyToOne(type => Role, role => role.uuid)
   role?: Role;
 }

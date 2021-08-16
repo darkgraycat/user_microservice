@@ -4,7 +4,7 @@ import { CreatePermissionDto } from './dto/create-permission.dto';
 import { Permission } from './entities/permission.entity';
 import { PermissionService } from './permission.service';
 
-@Controller('permission')
+@Controller('permissions')
 export class PermissionController {
   constructor(private readonly permissionService: PermissionService) { }
 

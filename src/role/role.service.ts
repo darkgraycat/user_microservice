@@ -27,11 +27,12 @@ export class RoleService {
   }
 
   async create(dto: CreateRoleDto): Promise<Role> {
-    const role = await this.roleRepository.create({ name: dto.name });
-    dto.permissionUuids.map(async (uuid) => {
-      const permission = await this.permissionRepository.findOne(uuid);
-      if (!permission) throw new Error(`Invalid permission id: ${uuid}`);
-      role.permissions.push(permission);
+    const permissions = await Promise.all(
+      dto.permissionUuids.map(uuid => this.permissionRepository.findOne(uuid))
+    );
+    const role = this.roleRepository.create({
+      ...dto,
+      permissions
     });
     return this.roleRepository.save(role);
   }

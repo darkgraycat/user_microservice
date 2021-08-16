@@ -12,15 +12,11 @@ export class PermissionService {
   ) { }
 
   getAll(): Promise<Permission[]> {
-    return this.permissionRepository.find({
-      relations: ['roles'],
-    });
+    return this.permissionRepository.find();
   }
 
   getById(id: string): Promise<Permission> {
-    return this.permissionRepository.findOne(id, {
-      relations: ['roles'],
-    });
+    return this.permissionRepository.findOne(id);
   }
 
   async create(dto: CreatePermissionDto): Promise<Permission> {

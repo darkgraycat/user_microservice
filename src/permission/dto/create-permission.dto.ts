@@ -3,5 +3,5 @@ import { OPERATIONS } from 'src/common/constants';
 
 export class CreatePermissionDto {
   @IsString()
-  readonly operation: OPERATIONS;
+  readonly type: OPERATIONS;
 }

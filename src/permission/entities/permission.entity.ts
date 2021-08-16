@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { OPERATIONS } from 'src/common/constants';
 import { Role } from 'src/role/entities/role.entity';
@@ -9,8 +9,8 @@ export class Permission {
   uuid: string;
 
   @Column()
-  operation: OPERATIONS;
+  type: OPERATIONS;
 
-  @OneToMany(() => Role, role => role.uuid)
+  @ManyToMany(type => Role, role => role.permissions)
   roles: Role[];
 }

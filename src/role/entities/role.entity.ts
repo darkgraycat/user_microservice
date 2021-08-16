@@ -14,7 +14,7 @@ export class Role {
   @OneToMany(() => User, user => user.uuid)
   users: User[];
 
-  @ManyToMany(() => Permission)
   @JoinTable()
+  @ManyToMany(type => Permission, permission => permission.roles, { cascade: true })
   permissions: Permission[];
 }

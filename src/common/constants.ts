@@ -1,8 +1,8 @@
 export enum OPERATIONS {
-  CREATE = 'create',
-  READ = 'read',
-  UPDATE = 'update',
-  DELETE = 'delete',
+  CREATE = 'CREATE',
+  READ = 'READ',
+  UPDATE = 'UPDATE',
+  DELETE = 'DELETE',
 }
 
 export const HOST: string = 'localhost';
