@@ -18,6 +18,11 @@ export class UserController {
     return this.userService.getById(id);
   }
 
+  @Get('isAdmin/:id')
+  isAdmin(@Param('id') id: string): Promise<boolean> {
+    return this.userService.isAdmin(id);
+  }
+
   @Post()
   create(@Body() dto: CreateUserDto): Promise<User> {
     return this.userService.create(dto);
