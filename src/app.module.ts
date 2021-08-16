@@ -20,7 +20,7 @@ import { DB_DATABASE, DB_PASSWORD, DB_PORT, DB_USERNAME, HOST } from './common/c
       password: DB_PASSWORD,
       database: DB_DATABASE,
       autoLoadEntities: true,
-      // synchronize: true,
+      synchronize: true,
     }),
   ],
   controllers: [AppController],
