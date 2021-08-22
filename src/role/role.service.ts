@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Permission } from '../permission/entities/permission.entity';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { Role } from './entities/role.entity';
 
@@ -27,9 +27,9 @@ export class RoleService {
   }
 
   async create(dto: CreateRoleDto): Promise<Role> {
-    const permissions = await Promise.all(
-      dto.permissionUuids.map(uuid => this.permissionRepository.findOne(uuid))
-    );
+    const permissions = await this.permissionRepository.find({
+      uuid: In(dto.permissionUuids),
+    });
     const role = this.roleRepository.create({
       ...dto,
       permissions
